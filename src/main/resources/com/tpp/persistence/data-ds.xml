@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="abstractHikariConfig" class="com.zaxxer.hikari.HikariConfig" abstract="true">
+	    <property name="poolName" value="springHikariConnectionPool" />
+	    <!-- <property name="connectionTestQuery" value="SELECT 1" /> -->
+	    <property name="dataSourceClassName"   value="${jdbc.dsClass:com.mysql.jdbc.jdbc2.optional.MysqlDataSource}" />
+	    <!-- ## max_thead*(connection_per_thread-1)+1 -->
+	    <property name="maximumPoolSize" value="${jdbc.poolSize:16}"></property>
+	    <property name="dataSourceProperties">
+	    <value>
+		    url=${jdbc.url}
+		    user=${jdbc.username}
+		    password=${jdbc.password}
+		    prepStmtCacheSize=${jdbc.stmtCacheSize:250}
+		    prepStmtCacheSqlLimit=${jdbc.stmtSqlCacheLimit:2048}
+		    cachePrepStmts=true
+	    </value>
+	    </property>
+	</bean>
+			
+	<bean id="abstractDataSource" abstract="true" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+	    <constructor-arg >
+		    <bean parent="abstractHikariConfig" >
+		    </bean>
+	    </constructor-arg>
+	</bean>
+	
+	<!--  usage -->
+	<!-- 
+	<bean id="dataSource" parent="abstractDataSource"/>
+	 -->
+	
+</beans>

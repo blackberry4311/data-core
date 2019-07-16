@@ -1,0 +1,1 @@
+# Common Data Object and Dao which used for all projects
