@@ -18,7 +18,7 @@
 
         <hibernate.version>5.0.9.Final</hibernate.version>
         <apache.common.lang.version>3.4</apache.common.lang.version>
-        <mysql.connector.version>6.0.6</mysql.connector.version>
+        <mysql.connector.version>8.0.16</mysql.connector.version>
     </properties>
 
     <dependencies>
