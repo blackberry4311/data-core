@@ -16,7 +16,7 @@
         <spring.version>4.3.3.RELEASE</spring.version>
         <hikari.version>2.6.3</hikari.version>
 
-        <hibernate.version>5.0.9.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
         <apache.common.lang.version>3.4</apache.common.lang.version>
         <mysql.connector.version>6.0.6</mysql.connector.version>
     </properties>
